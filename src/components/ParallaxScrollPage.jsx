@@ -58,6 +58,11 @@ export default function ParallaxScrollPage() {
     let ticking = false
     let virtualScrollPosition = 0
     const carouselStartY = 800, carouselVirtualHeight = 2000
+    
+    // Touch handling variables for mobile
+    let touchStartY = 0
+    let touchStartTime = 0
+    let isTouching = false
 
     const updateScrollY = () => {
       const currentScrollY = window.pageYOffset
@@ -95,15 +100,72 @@ export default function ParallaxScrollPage() {
       }
     }
 
+    // Touch event handlers for mobile drag functionality
+    const handleTouchStart = (e) => {
+      if (showCarousels && !allowFurtherScroll) {
+        touchStartY = e.touches[0].clientY
+        touchStartTime = Date.now()
+        isTouching = true
+      }
+    }
+
+    const handleTouchMove = (e) => {
+      if (showCarousels && !allowFurtherScroll && isTouching) {
+        e.preventDefault()
+        const currentY = e.touches[0].clientY
+        const deltaY = touchStartY - currentY // Drag down = positive movement
+        
+        virtualScrollPosition = Math.max(0, Math.min(carouselVirtualHeight, virtualScrollPosition + deltaY * 2))
+        const progress = virtualScrollPosition / carouselVirtualHeight
+        setCarouselProgress(progress)
+        
+        if (progress >= 0.95) {
+          setAllowFurtherScroll(true)
+          window.scrollTo(0, carouselStartY + 100)
+        }
+        
+        touchStartY = currentY // Update for continuous dragging
+      }
+    }
+
+    const handleTouchEnd = (e) => {
+      if (showCarousels && !allowFurtherScroll && isTouching) {
+        isTouching = false
+        const touchEndTime = Date.now()
+        const touchDuration = touchEndTime - touchStartTime
+        
+        // Add momentum for quick swipes (drag down fast)
+        if (touchDuration < 300) {
+          const momentum = 150
+          virtualScrollPosition = Math.max(0, Math.min(carouselVirtualHeight, virtualScrollPosition + momentum))
+          const progress = virtualScrollPosition / carouselVirtualHeight
+          setCarouselProgress(progress)
+          
+          if (progress >= 0.95) {
+            setAllowFurtherScroll(true)
+            window.scrollTo(0, carouselStartY + 100)
+          }
+        }
+      }
+    }
+
     const requestTick = () => { if (!ticking) { requestAnimationFrame(updateScrollY); ticking = true } }
     const handleSmoothScroll = () => requestTick()
 
     window.addEventListener("scroll", handleSmoothScroll, { passive: true })
     window.addEventListener("wheel", handleWheelScroll, { passive: false })
     
+    // Add touch event listeners for mobile drag functionality
+    window.addEventListener("touchstart", handleTouchStart, { passive: false })
+    window.addEventListener("touchmove", handleTouchMove, { passive: false })
+    window.addEventListener("touchend", handleTouchEnd, { passive: true })
+    
     return () => {
       window.removeEventListener("scroll", handleSmoothScroll)
       window.removeEventListener("wheel", handleWheelScroll)
+      window.removeEventListener("touchstart", handleTouchStart)
+      window.removeEventListener("touchmove", handleTouchMove)
+      window.removeEventListener("touchend", handleTouchEnd)
     }
   }, [showCarousels, allowFurtherScroll])
 
