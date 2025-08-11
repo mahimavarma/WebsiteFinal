@@ -1,0 +1,4 @@
+.nav-link:hover,
+.dropdown-item:hover {
+  color: #a084ff !important;
+}

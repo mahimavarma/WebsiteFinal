@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+
+* {
+  background: "#0a0a0a !important";
+}
+body {
+  font-family: 'Manrope', sans-serif;
+  position: relative;
+  box-sizing: border-box;
+  color: white;
+}
+.custom-nav:hover {
+  border-bottom: 2px solid white;
+  cursor: pointer;
+  color: red !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+.hero-bg {
+  background: linear-gradient(#000000b3, #000000b3),
+    url("/assets/img/main_bg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.btn {
+  border-radius: 0.5rem !important;
+}
+
+.bg-primary {
+  background-color: rgb(25, 219, 249);
+}
+.service-section {
+}
+
+.text-gray {
+  color: rgb(100, 99, 99);
+}
+
+.card {
+  padding: 1.5rem;
+  box-shadow: rgba(87, 181, 231, 0.2) 0px 0px 15px;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(87, 181, 231, 0.2) 0px 10px 25px -5px,
+    rgba(87, 181, 231, 0.1) 0px 10px 10px -5px;
+  box-sizing: border-box;
+
+  border: 2px solid rgb(87, 181, 231);
+}
+
+.custom-btn {
+  background-color: rgb(87, 181, 231);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.custom-envelope {
+  display: inline-block;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: rgb(87 181 231 / 0.1);
+  color: rgb(87, 181, 231);
+}
+
+.custom-color {
+  color: rgb(87, 181, 231);
+}
+
+.about-section {
+  background-color: black;
+}
+
+.light-color {
+  color: lightgray;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("/fonts/Nohemi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+/* Entire wrapper: input + flag */
+.react-international-phone-input-container {
+  background-color: rgb(51,65,85,0.5) !important; 
+  border: 1px solid #334155; /* slate-700 */
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 0.75rem 1rem; /* py-3 px-4 */
+  transition: all 0.3s ease; /* Tailwind's transition-all duration-300 */
+  color: white;
+}
+
+/* Remove focus ring around the entire input wrapper */
+.react-international-phone-input-container:focus-within {
+  box-shadow: none !important;
+  border-color: #2D99BA !important;
+}
+
+/* Input field */
+.react-international-phone-input-container input {
+  background-color: transparent !important;
+  color: white !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 1rem;
+}
+
+/* Remove browser focus outline on input */
+.react-international-phone-input-container input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Placeholder text */
+.react-international-phone-input-container input::placeholder {
+  color: #cbd5e1 !important; /* slate-300 */
+}
+
+/* Flag button area (no border now) */
+.react-international-phone-country-selector-button {
+  background-color: rgb(51,65,85,0) !important;
+  color: white !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove browser focus outline on country selector button */
+.react-international-phone-country-selector-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Country dropdown menu */
+.react-international-phone-country-selector-dropdown {
+  background-color: #0f172a !important;
+  color: white !important;
+}
+
+/* Dropdown items */
+.react-international-phone-country-selector-dropdown__list-item {
+  background-color: #0f172a !important;
+  color: white !important;
+  transition: background 0.2s ease;
+}
+
+/* Dropdown hover state */
+.react-international-phone-country-selector-dropdown__list-item:hover {
+  background-color: #1e293b !important; /* bg-slate-800 */
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-in-out;
+}
