@@ -1,33 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   background-color: #000000 !important;
   scroll-behavior: smooth;
-  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: 'Manrope', sans-serif;
   background-color: #000000 !important;
   color: white;
-  height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
+  box-sizing: border-box;
 }
 .custom-nav:hover {
   border-bottom: 2px solid white;
   cursor: pointer;
   color: red !important;
 }
-html {
-  scroll-behavior: smooth;
-}
+
 .hero-bg {
   background: linear-gradient(#000000b3, #000000b3),
     url("/assets/img/main_bg.jpg");

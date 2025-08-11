@@ -69,7 +69,7 @@ function App() {
   console.log("App.jsx: Current activeSection:", activeSection);
 
   return (
-    <div className="relative min-h-screen bg-black w-full" style={{ minHeight: '100vh', backgroundColor: '#000000' }}>
+    <div className="relative min-h-screen bg-black">
       {isLoading ? (
         <LoadingPage />
       ) : (
