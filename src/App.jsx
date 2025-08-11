@@ -69,7 +69,7 @@ function App() {
   console.log("App.jsx: Current activeSection:", activeSection);
 
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className="relative min-h-screen bg-black w-full" style={{ minHeight: '100vh', backgroundColor: '#000000' }}>
       {isLoading ? (
         <LoadingPage />
       ) : (
@@ -126,6 +126,13 @@ function App() {
                 <FadeIn delay={0.6}>
                   <FaqSection />
                 </FadeIn>
+              </section>
+
+              {/* Simple footer replacement to prevent white space */}
+              <section id="footer" className="bg-black min-h-[50px] w-full">
+                <div className="bg-black w-full h-full min-h-[50px] flex items-center justify-center">
+                  <span className="text-slate-500 text-xs">© 2025 Axelon Tech</span>
+                </div>
               </section>
 
               {/* <section id="footer">
