@@ -69,7 +69,7 @@ function App() {
   console.log("App.jsx: Current activeSection:", activeSection);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-black">
       {isLoading ? (
         <LoadingPage />
       ) : (
