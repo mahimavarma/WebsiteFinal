@@ -128,11 +128,11 @@ function App() {
                 </FadeIn>
               </section>
 
-              <section id="footer">
+              {/* <section id="footer">
                 <FadeIn delay={0.4}>
                   <Footer />
                 </FadeIn>
-              </section>
+              </section> */}
             </>
           )}
 

@@ -287,7 +287,7 @@ export default function ParallaxScrollPage() {
   console.log('🏁 Component render complete at:', performance.now())
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-black" style={{ minHeight: '100vh', height: '100%' }}>
       <style>{`
         .glow-text {
           text-shadow: 
