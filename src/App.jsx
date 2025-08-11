@@ -50,20 +50,34 @@ const FloatingWhatsAppButton = () => {
 };
 
 function App() {
-  // const [isLoading, setIsLoading] = useState(true);
-  const [isLoading, setIsLoading] = useState(false); // Commented out loading page
+  const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("");
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 5200);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Check for hash in URL on component mount (for direct navigation to refer-earn)
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#refer-earn') {
+      console.log("App.jsx: Direct navigation to refer-earn detected");
+      setActiveSection('refer-earn');
+    }
+  }, []);
 
   const handleSectionChange = (section) => {
     console.log("App.jsx: handleSectionChange called with section:", section);
+    console.log("App.jsx: Setting activeSection to:", section);
     setActiveSection(section);
+    
+    // Force a re-render check
+    setTimeout(() => {
+      console.log("App.jsx: Current activeSection after timeout:", section);
+    }, 100);
   };
 
   console.log("App.jsx: Current activeSection:", activeSection);
@@ -73,13 +87,12 @@ function App() {
       {isLoading ? (
         <LoadingPage />
       ) : (
-        // <Background>
-        <>
+        <Background>
           <Navbar onSectionChange={handleSectionChange} />
           
           {activeSection === "refer-earn" ? (
             <section id="refer-earn" style={{ minHeight: "100vh", position: "relative", zIndex: 10 }}>
-              {console.log("App.jsx: Rendering Refer component")}
+              {console.log("App.jsx: Rendering Refer component, activeSection:", activeSection)}
               <FadeIn>
                 <Refer />
               </FadeIn>
@@ -128,24 +141,16 @@ function App() {
                 </FadeIn>
               </section>
 
-              {/* Simple footer replacement to prevent white space */}
-              <section id="footer" className="bg-black min-h-[50px] w-full">
-                <div className="bg-black w-full h-full min-h-[50px] flex items-center justify-center">
-                  <span className="text-slate-500 text-xs">© 2025 Axelon Tech</span>
-                </div>
-              </section>
-
-              {/* <section id="footer">
+              <section id="footer">
                 <FadeIn delay={0.4}>
                   <Footer />
                 </FadeIn>
-              </section> */}
+              </section>
             </>
           )}
 
           <FloatingWhatsAppButton />
-        {/* </Background> */}
-        </>
+        </Background>
       )}
     </div>
   );
