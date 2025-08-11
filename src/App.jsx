@@ -73,7 +73,8 @@ function App() {
       {isLoading ? (
         <LoadingPage />
       ) : (
-        <Background>
+        // <Background>
+        <>
           <Navbar onSectionChange={handleSectionChange} />
           
           {activeSection === "refer-earn" ? (
@@ -136,7 +137,8 @@ function App() {
           )}
 
           <FloatingWhatsAppButton />
-        </Background>
+        {/* </Background> */}
+        </>
       )}
     </div>
   );
