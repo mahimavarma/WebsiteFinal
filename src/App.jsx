@@ -50,15 +50,16 @@ const FloatingWhatsAppButton = () => {
 };
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false); // Commented out loading page
   const [activeSection, setActiveSection] = useState("");
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 5200);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 5200);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const handleSectionChange = (section) => {
     console.log("App.jsx: handleSectionChange called with section:", section);
